@@ -1,0 +1,89 @@
+{% extends 'system/layouts/base.html' %}
+{% load static %}
+{% block title %} Library {% endblock title %}
+{% block head %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dashbord</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'system/css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock head %}
+
+
+{% block main %}
+
+<div class="alert alert-success" style="background-color: #153450;color: #fff; text-align: center;">
+    <h4 class="alert-heading">OUR BOOKS</h4>
+</div>
+
+<section id="portfolio-section" class="page bg-style1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portfolio">
+                    <div class="portfoloi_content_area">
+                        <div class="portfolio_content">
+                            <div class="row" id="portfolio">
+                                {% for book in books %}
+                                <div class="col-xs-12 col-sm-4 appsDevelopment">
+                                    <div class="portfolio_single_content">
+                                        <img src="{{book.book_photo.url}}" alt="title"/>
+                                        <div>
+                                            <h3 style="margin-top: 50px; color:#fff;">{{book.book_name}}</h3>
+                                            <span style="font-size:20px;">Author:</span>
+                                            <span style="font-size:20px;">{{book.author}}</span>
+                                            <br>
+                                            <span style="font-size:20px;">Category:</span>
+                                            <span style="font-size:20px;">{{book.category_name}}</span>
+                                            <br>
+                                            <br>
+                                            {% if book.active == True %}
+                                            <span style="font-size:20px; font-weight:bold; color: green;">AVAILABLE</span>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <a href="{% url 'book' book.id %}" class="btn btn-primary btn-lg active"
+                                               role="button" aria-pressed="true"
+                                               style="background-color: #31C2CF; width: 150px; display:inline;">Raed
+                                                More</a>
+                                            <a href="{% url 'br_process' book.id %}"
+                                               class="btn btn-primary btn-lg active" role="button"
+                                               aria-pressed="true"
+                                               style="background-color: #3D348B; width: 150px; display:inline;">Borrow</a>
+                                            {% else %}
+                                            <span style="font-size:20px; font-weight:bold; color: red;">NOT AVAILABLE</span>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <a href="{% url 'book' book.id %}" class="btn btn-primary btn-lg active"
+                                               role="button" aria-pressed="true"
+                                               style="background-color: #31C2CF; width: 150px; display:inline;">Raed
+                                                More</a>
+                                            {% endif %}
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+{% endblock main %}

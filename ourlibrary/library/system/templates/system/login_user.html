@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+{% block head %}
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'system/css/stylesheet.css'%}">
+</head>
+{% endblock head %}
+{% block main %}
+
+<body>
+<!-- <h1> LOGIN PAGE </h1> -->
+<div class="container">
+    <div class="wrapperoflogin">
+        <div id="formContent">
+
+            <!-- Tabs Titles -->
+            <h2 class="active"> Login </h2>
+
+            <!-- Login Form -->
+            <form class="form" method="POST" action="">
+                {%csrf_token%}
+                <input type="text" id="username" name="username" placeholder="User username">
+                <input type="password" id="Password" name="Password" placeholder="Password">
+                <input type="submit" id="logbutton" value="Log In">
+                <div>
+                    {% if messages %}
+
+                        {% for message in messages %}
+                        <h5  style = "color:red"  {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h5>
+                        {% endfor %}
+
+                    {% endif %}
+                </div>
+                <a href="{% url 'register'%}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create
+                    an
+                    Account</a>
+
+            </form>
+
+            <!-- if you don't have an account -->
+
+        </div>
+        <div id='imageoflogin'>
+            <img src="{% static 'system/images/loginimage2.jpg'%}" alt="title"/>
+        </div>
+
+    </div>
+</div>
+
+</body>
+{% endblock main %}
+</html>

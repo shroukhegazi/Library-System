@@ -1,0 +1,50 @@
+{% extends 'system/layouts/base.html' %}
+{%load static%}
+{% block head %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dashbord</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'system/css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock head %}
+{% block main %}
+
+<div class="container">
+    <h1>{{book.book_name}}</h1>
+    <div class="content">
+
+        <div class="image" style="width: auto;">
+            <img src="{{book.book_photo.url}}" alt="..." class="img-thumbnail">
+
+        </div>
+
+        <div class="Summary">
+            <h4>Summary</h4>
+            <p>{{book.summary}}</p>
+            <h6>Authors: <span>{{book.author}}</span></h6>
+            <h6>Category: <span>{{book.category_name}}</span></h6>
+            {% if book.active == True %}
+            <h6>Status: <span>Available</span></h6>
+            <br>
+            <a href="{% url 'br_process' book.id %}"
+               class="btn btn-primary btn-lg active" role="button"
+               aria-pressed="true"
+               style="background-color: #3D348B; width: 150px; display:inline;">Borrow</a>
+            {% else %}
+            <h6>Status: <span>Not Available</span></h6>
+             <h6>Return Date: <span>{{book.return_date}}</span></h6>
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+</div>
+{% endblock main %}

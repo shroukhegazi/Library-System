@@ -1,0 +1,70 @@
+{% load static %}
+<html>
+{% block head %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'system/css/stylesheet.css'%}">
+</head>
+{% endblock head %}
+{% block main %}
+
+<body>
+<!-- <h1> REGISTRATION PAGE </h1> -->
+<div class="container">
+    <div class="wrapperofregister ">
+        <div id="formContentofregister">
+            <!-- Tabs Titles -->
+            <h2 class="active"> Register </h2>
+
+            <!-- register form Form -->
+            <form method='POST'>
+                {% csrf_token%}
+                <div id="flname">
+                    <input type="text" id="fname" name="fname" placeholder="First Name">
+                    <input type="text" id="lname" name="lname" placeholder="Last Name">
+                </div>
+                <input type="text" id="user" name="username" placeholder="Username">
+                <input type="text" id="email" name="email" placeholder="E-mail">
+                <input type="password" id="password" name="Password" placeholder="Password">
+                <input type="password" id="Confirm_Password" name="Confirm_Password" placeholder="Confirm Password">
+                <input type="submit" id="regbutton" name="signup_submit" value="Register">
+                <div id="messageoflreg">
+                   {% if messages %}
+
+                        {% for message in messages %}
+                        <h5  style = "color:red"  {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h5>
+                        {% endfor %}
+
+                    {% endif %}
+                </div>
+                <a href="{% url 'loginuser'%}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Already
+                    a Member</a>
+
+            </form>
+
+        </div>
+        <div id="imageofregister">
+            <img src="{% static 'system/images/registerimage.jpg'%}" alt="title"/>
+        </div>
+    </div>
+</div>
+<footer class="mainfooter" role="contentinfo">
+
+    <div class="footer-content">
+        <div class="footer-icon">
+
+            <a href="https://facebook.com/Praful932/Kitabe"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+            <a href="mailto:kitabeaurkahaniya@gmail.com" target="_blank"><i class="fa fa-google fa-2x"
+                                                                            aria-hidden="true"></i></a>
+            <a href="https://github.com/Praful932/Kitabe"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+            <a href="https://linkedin.com/Praful932/Kitabe"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/Praful932/Kitabe"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+            <div class=" copy pt-1">
+                <p class="text-center">&copy; Copyright 2020 - <strong>Kitabe</strong> All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+{% endblock main %}

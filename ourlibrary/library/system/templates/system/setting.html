@@ -1,0 +1,79 @@
+{%load static%}
+<html lang="en">
+{% load crispy_forms_tags %}
+{% block head %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dashbord</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'system/css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock head %}
+{% block main %}
+
+<body>
+
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="custom-menu">
+        </div>
+        <div class="img bg-wrap text-center py-4">
+            <div class="user-logo">
+                <div class="img" style="background-image: url({{std.photo.url}});"></div>
+                <h3>{{std.first_name}} {{std.last_name}}</h3>
+            </div>
+        </div>
+        <ul class="list-unstyled components mb-5">
+            <li>
+                <a href="{% url 'libhome' %}"><span class="fa fa-home mr-3"></span>Home</a>
+            </li>
+            <li class="active">
+                <a href="{% url 'myboard'  %}"><span class="fa fa-user mr-3"></span>Dashbord</a>
+            </li>
+            <li>
+                <a href="{% url 'setting' %}"><span class="fa fa-cog mr-3"></span> Settings</a>
+            </li>
+
+            <li>
+                <a href="{% url 'Logoutueser'%}"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+            </li>
+        </ul>
+
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <div class="alert alert-success" style="background-color: #153450;color: #fff; text-align: center;">
+            <h4 class="alert-heading">YOUR INFORMATION</h4>
+        </div>
+        <br>
+        <br>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">update</button>
+            <a class="btn btn-danger" href="{% url 'std_delete' %}">Delete account</a>
+        </form>
+
+    </div>
+
+    {% endblock main %}
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</body>
+</html>

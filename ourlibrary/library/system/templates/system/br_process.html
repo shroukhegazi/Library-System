@@ -1,0 +1,54 @@
+{%load static%}
+<html lang="en">
+{% load crispy_forms_tags %}
+{% block head %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dashbord</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'system/css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock head %}
+{% block main %}
+
+<body>
+<!-- Page Content  -->
+<div id="content" class="p-4 p-md-5 pt-5">
+    <div class="alert alert-success" style="background-color: #153450;color: #fff; text-align: center;">
+        <h4 class="alert-heading">{{book.book_name}}</h4>
+    </div>
+    <br>
+    <br>
+    <h4>Library instruction</h4>
+    <ol>
+        <li>All loans must be registered in a lending machine or at the help desk.</li>
+        <li>Users are responsible for returning books on time.</li>
+        <li>Users are obliged to keep themselves updated on the loan period of any borrowed books.</li>
+        <li>Users are not allowed to highlight any text or make notes in library books.</li>
+    </ol>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
+
+</div>
+
+{% endblock main %}
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

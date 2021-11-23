@@ -1,0 +1,25 @@
+#contactus {
+    background-color: #dee3de;
+    padding: 25px 50px;
+    padding-bottom: 55px;
+  }
+  
+  #contact-head {
+    text-align: center;
+    text-transform: uppercase;
+    color: #FA944B;
+    font-weight: 650;
+    font-size: 35px;
+    border-bottom: 1.5px solid #FA944B;
+    padding-bottom: 4px;
+  }
+  
+  #contact-message {
+    color: #FA944B;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0px 80px;
+  }
+  
